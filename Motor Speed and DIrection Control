@@ -1,0 +1,37 @@
+//defining pins
+
+#define Left1 12
+#define Left2 13
+
+#define ENA 27
+
+
+void setup() {
+  // setting up pin modes
+  pinMode(Left1, OUTPUT);
+  pinMode(Left2, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  digitalWrite(ENA, HIGH);
+  Serial.begin(9600);
+  Serial.print("working on setup");
+
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.print("in loop\n");
+  digitalWrite(Left1, HIGH);
+  digitalWrite(Left2, LOW);
+
+  while (true){
+    for (int i = 0; i < 255; i += 5){
+      ledcWrite(ENA, i);
+    }
+
+    for (int i = 255; i >0 255; i = 5){
+      ledcWrite(ENA, i);
+    }
+  }
+
+}
