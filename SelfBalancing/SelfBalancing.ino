@@ -10,8 +10,6 @@
 #define ENB 17 //left side
 
 int motorPower = 10; //0 to 255
-long previousTime = 0;
-long time = 0;
 
 //PID variables
 double Input, Output;
@@ -36,7 +34,8 @@ void setup() {
   previousTime = millis();
 
   errorCheck.SetMode(AUTOMATIC);
-  // TODO: get first input for input
+
+  Input = getTiltAngle();
 }
 
 void loop() {
@@ -49,16 +48,14 @@ void loop() {
   // calculate error
   myPid.Compute();
 
-  // calculate motorPower
+  // TODO: calculate motorPower
   
 
   if(angle > 0 && angle < 60) {
     moveForward(motorPower); //speed from PID (temporary variable for speed)
-    previousTime = millis();
   }
   else if(angle < 0 && angle < -60) {
     moveBackward(motorPower);
-    previousTime = millis();
   }
 
 }
@@ -84,9 +81,5 @@ void moveBackward(int power) {
 }
 
 int getTiltAngle() {
-  //get angle from gyroscope
-}
-
-float getPIDTuning() {
-
+  // TODO: get angle from gyroscope
 }
