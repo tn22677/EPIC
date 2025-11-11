@@ -1,5 +1,4 @@
-#include <Arduino.h>
-#include <PID_v1.h>         
+#include <Arduino.h>       
 #include "config.h"
 #include "motor.h"
 #include "imu.h"
@@ -21,20 +20,23 @@ void setup() {
   prevTime = 0;
   prevError = 0;
   totalError = 0;
+  PID = 0;
 }
 
 void loop() {
   error = getError();
+  angle = getTiltAngle();
 
   PID = getProportionalError() + getIntegralError() + getDerivativeError();
 
   Serial.print("Output = ");
-  Serial.println(Output);
+  Serial.println(PID);
+
 
   if (angle > 0 && angle < 75) {
-    moveForward(motorPower);
+    moveForward(PID);
   } else if (angle < 0 && angle > -75) {
-    moveBackward(motorPower);
+    moveBackward(PID);
   } else {
     analogWrite(ENA, 0);
     analogWrite(ENB, 0);

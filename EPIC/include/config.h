@@ -10,9 +10,10 @@
 #define ENA 27 // Right side
 #define ENB 26 // Left side
 
-// Motor variables
+//general variables
 extern int motorPower;
-extern int angle;
+extern double angle;
+extern double PID;
 
 // custom PID variables
 extern double Kp = 1;
