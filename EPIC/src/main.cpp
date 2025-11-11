@@ -1,42 +1,33 @@
 #include <Arduino.h>
-#include <PID_v1.h>         // optional\
+#include <PID_v1.h>         
 #include "config.h"
 #include "motor.h"
 #include "imu.h"
-#include "pid_custom.h"     // your custom PID class
+#include "pid_custom.h"     // custom PID class
 
-// Global variable definitions
-int motorPower = 10;
-double Input, Output;
-double desiredPitch = 0.0;
-double Kp = 1, Ki = 0, Kd = 1;
-
-// You can switch between library PID and your custom one
-//PIDCustom myPID(Kp, Ki, Kd);
-PID myPID(&Input, &Output, &desiredPitch, Kp, Ki, Kd, P_ON_E, DIRECT);
 
 void setup() {
   Serial.begin(115200);
 
-  pinMode(Left1, OUTPUT);
-  pinMode(Right1, OUTPUT);
-  pinMode(Left2, OUTPUT);
-  pinMode(Right2, OUTPUT);
-  pinMode(ENA, OUTPUT);
-  pinMode(ENB, OUTPUT);
-
+  motorInit();
   initMPU6050();
 
-  myPID.SetMode(AUTOMATIC);
+  //myPID.SetMode(AUTOMATIC);
+  //Input = getTiltAngle();
 
-  Input = getTiltAngle();
+  error = getError();
+  angle = getTiltAngle();
+
+  prevTime = 0;
+  prevError = 0;
+  totalError = 0;
 }
 
 void loop() {
-  double angle = getTiltAngle();
-  myPID.Compute();
+  //double angle = getTiltAngle();
+  //myPID.Compute();
 
-  motorPower = abs(Output);
+
   Serial.print("Output = ");
   Serial.println(Output);
 

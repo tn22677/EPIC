@@ -12,7 +12,15 @@
 
 // Motor variables
 extern int motorPower;
+extern int angle;
 
-// PID variables
-extern double Input, Output, desiredPitch;
-extern double Kp, Ki, Kd;
+// custom PID variables
+extern double Kp = 1;
+extern double Ki = 1;
+extern double Kd = 1;
+
+extern int prevTime; 
+extern int prevError;
+
+extern double totalError; //integral
+extern double error;

@@ -2,7 +2,12 @@
 #include "config.h"
 
 void motorInit(){
-    
+  pinMode(Left1, OUTPUT);
+  pinMode(Right1, OUTPUT);
+  pinMode(Left2, OUTPUT);
+  pinMode(Right2, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
 }
 
 void moveForward(int power) {
