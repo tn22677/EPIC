@@ -24,9 +24,9 @@ void setup() {
 }
 
 void loop() {
-  //double angle = getTiltAngle();
-  //myPID.Compute();
+  error = getError();
 
+  PID = getProportionalError() + getIntegralError() + getDerivativeError();
 
   Serial.print("Output = ");
   Serial.println(Output);
