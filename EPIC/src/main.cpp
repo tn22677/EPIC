@@ -2,7 +2,7 @@
 #include "config.h"
 #include "motor.h"
 #include "imu.h"
-#include "pid_custom.h"     // custom PID class
+#include "pid_custom.h"   
 
 
 void setup() {
@@ -16,6 +16,10 @@ void setup() {
 
   error = getError();
   angle = getTiltAngle();
+
+  Kp = 1;
+  Ki = 1;
+  Kd = 1;
 
   prevTime = 0;
   prevError = 0;

@@ -7,21 +7,21 @@
 #define Right1 25
 #define Right2 13
 
-#define ENA 27 // Right side
-#define ENB 26 // Left side
+#define ENA 27
+#define ENB 26
 
-//general variables
+// General variables
 extern int motorPower;
 extern double angle;
 extern double PID;
 
-// custom PID variables
-extern double Kp = 1;
-extern double Ki = 1;
-extern double Kd = 1;
+// Custom PID variables
+extern double Kp;
+extern double Ki;
+extern double Kd;
 
 extern int prevTime; 
 extern int prevError;
 
-extern double totalError; //integral
+extern double totalError; 
 extern double error;
