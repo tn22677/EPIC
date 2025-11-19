@@ -3,10 +3,11 @@
 #include "motor.h"
 #include "imu.h"
 #include "pid_custom.h"   
-
+#include <algorithm>
+#include <cmath>
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   motorInit();
   initMPU6050();
@@ -16,10 +17,6 @@ void setup() {
 
   error = getError();
   angle = getTiltAngle();
-
-  Kp = 1;
-  Ki = 1;
-  Kd = 1;
 
   prevTime = 0;
   prevError = 0;
@@ -33,14 +30,19 @@ void loop() {
 
   PID = getProportionalError() + getIntegralError() + getDerivativeError();
 
-  Serial.print("Output = ");
+  Serial.print("PID = ");
   Serial.println(PID);
 
+  //int motorSpeed = std::min(130.0, std::abs(PID));
+  int motorSpeed = std::abs(PID);
+
+  Serial.print("Motor speed = ");
+  Serial.println(motorSpeed);
 
   if (angle > 0 && angle < 75) {
-    moveForward(PID);
+    moveBackward(motorSpeed);
   } else if (angle < 0 && angle > -75) {
-    moveBackward(PID);
+    moveForward(motorSpeed);
   } else {
     analogWrite(ENA, 0);
     analogWrite(ENB, 0);

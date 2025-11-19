@@ -5,9 +5,9 @@ int motorPower = 0;
 double angle = 0;
 double PID = 0;
 
-double Kp = 1;
-double Ki = 1;
-double Kd = 1;
+double Kp = 45 ;
+double Ki = 0;
+double Kd = 0;
 
 int prevTime = 0;
 int prevError = 0;
