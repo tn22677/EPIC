@@ -3,7 +3,7 @@
 
 double getError(){
     double angle = getTiltAngle();
-    double error = 0 - angle;
+    double error = desired - angle;
 
     return error;
 }

@@ -14,6 +14,7 @@
 extern int motorPower;
 extern double angle;
 extern double PID;
+extern double desired;
 
 // Custom PID variables
 extern double Kp;

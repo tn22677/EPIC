@@ -27,3 +27,16 @@ void moveBackward(int power) {
   analogWrite(ENA, power);
   analogWrite(ENB, power);
 }
+
+double mapMotorSpeed(double x) {
+    // cap input first
+    if (x < 0) x = 0;
+    if (x > 255) x = 255;
+
+    // hard-coded linear mapping from [0,255] → [50,255]
+    int out = (x * (255 - 40) / 255) + 40;
+
+    if (out < 40) out = 40;
+    if (out > 255) out = 255;
+    return out;
+}
