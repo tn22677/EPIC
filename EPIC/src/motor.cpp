@@ -28,15 +28,31 @@ void moveBackward(int power) {
   analogWrite(ENB, power);
 }
 
-double mapMotorSpeed(double x) {
-    // cap input first
-    if (x < 0) x = 0;
-    if (x > 255) x = 255;
+// double mapMotorSpeed(double x) {
+//     // cap input
 
-    // hard-coded linear mapping from [0,255] → [50,255]
-    int out = (x * (255 - 40) / 255) + 40;
+//     if (x < 0) x = 0;
+//     if (x > 60) x = 60;
 
-    if (out < 40) out = 40;
-    if (out > 255) out = 255;
-    return out;
+//     // hard-coded linear map from [0,100] → [50,120]
+//     int out = (x * (120 - 82) / 60) + 82;
+
+//     return out;
+// }
+
+double mapMotorSpeed(double spdIn) {
+  int max = Kp * 60;
+  int min = 0;
+
+  int diff = spdIn;
+
+  return 82 + ((200-82) * diff / (max - min));
+}
+
+void testMotorSpeed(){
+  for (int i = 60; i < 255; i++){
+    moveForward(i);
+    Serial.print(i);
+    delay(1000);
+  }
 }

@@ -4,11 +4,11 @@
 int motorPower = 0;
 double angle = 0;
 double PID = 0;
-double desired = -3.12;
+double desired = 0; //6.68
 
 double Kp = 5;
 double Ki = 0;
-double Kd = 0;
+double Kd = 1;
 
 int prevTime = 0;
 int prevError = 0;

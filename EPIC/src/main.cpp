@@ -7,13 +7,15 @@
 #include <cmath>
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   motorInit();
   initMPU6050();
 
   //myPID.SetMode(AUTOMATIC);
   //Input = getTiltAngle();
+
+  testMotorSpeed();
 
   error = getError();
   angle = getTiltAngle();
@@ -22,6 +24,7 @@ void setup() {
   prevError = 0;
   totalError = 0;
   PID = 0;
+
 }
 
 void loop() {
@@ -42,6 +45,7 @@ void loop() {
 
   //int motorSpeed = std::min(130.0, std::abs(PID));
   int motorSpeed = mapMotorSpeed(std::abs(PID));
+  //int motorSpeed = std::abs(PID);
 
   Serial.print("Motor speed = ");
   Serial.println(motorSpeed);

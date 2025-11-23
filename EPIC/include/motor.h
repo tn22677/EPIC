@@ -4,4 +4,5 @@
 void motorInit();
 void moveForward(int power);
 void moveBackward(int power);
-double mapMotorSpeed(double x);
+double mapMotorSpeed(double spdIn);
+void testMotorSpeed();
