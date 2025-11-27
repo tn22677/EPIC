@@ -4,9 +4,9 @@
 int motorPower = 0;
 double angle = 0;
 double PID = 0;
-double desired = 0; //6.68
+double desired = -6.35; //6.68
 
-double Kp = 7;
+double Kp = 10;
 double Ki = 0;
 double Kd = 0;
 

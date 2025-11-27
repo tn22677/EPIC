@@ -27,10 +27,7 @@ float getTiltAngle() {
   mpu.getEvent(&a, &g, &temp);
 
   float position = a.acceleration.x - 0.5;
-  float angle = (position / 10.0) * 90.0;
-
-  Serial.print("angle = ");
-  Serial.println(angle);
+  float angle = (int) round((position / 10.0) * 90.0);
 
   return angle;
 }

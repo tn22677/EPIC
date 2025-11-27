@@ -46,7 +46,7 @@ double mapMotorSpeed(double spdIn) {
 
   int diff = (int) spdIn;
 
-  return 75 + ((200-75) * diff / (max - min));
+  return 75 + ((255-75) * diff / (max - min));
 }
 
 void testMotorSpeed(){

@@ -16,9 +16,12 @@ void setup() {
   //Input = getTiltAngle();
 
   //testMotorSpeed();
+  
 
   error = getError();
   angle = getTiltAngle();
+
+  Serial.print(angle);
 
   prevTime = 0;
   prevError = 0;
@@ -46,15 +49,22 @@ void loop() {
   int motorSpeed = mapMotorSpeed(std::abs(PID));
   //int motorSpeed = std::abs(PID);
 
+  Serial.print("angle = ");
+  Serial.println(angle);
+
   Serial.print("Motor speed = ");
   Serial.println(motorSpeed);
 
-  if (angle > desired && angle < 75) {
-    moveBackward(motorSpeed);
-  } else if (angle < desired && angle > -75) {
-    moveForward(motorSpeed);
-  } else {
+
+
+  if (fabs(angle) > 75) {
     analogWrite(ENA, 0);
     analogWrite(ENB, 0);
+  }
+  else if (error > 0) {
+    moveForward(motorSpeed);
+  } 
+  else {
+    moveBackward(motorSpeed);
   }
 }

@@ -4,6 +4,7 @@
 double getError(){
     angle = getTiltAngle();
     double error = desired - angle;
+    if (fabs(error) < 1) error = 0;
 
     return error;
 }
