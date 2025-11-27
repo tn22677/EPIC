@@ -15,7 +15,7 @@ void setup() {
   //myPID.SetMode(AUTOMATIC);
   //Input = getTiltAngle();
 
-  testMotorSpeed();
+  //testMotorSpeed();
 
   error = getError();
   angle = getTiltAngle();
@@ -29,7 +29,6 @@ void setup() {
 
 void loop() {
   error = getError();
-  angle = getTiltAngle();
 
   PID = getProportionalError() + getIntegralError() + getDerivativeError();
   // Serial.print("K = ");
@@ -44,7 +43,7 @@ void loop() {
   // Serial.println(PID);
 
   //int motorSpeed = std::min(130.0, std::abs(PID));
-  //int motorSpeed = mapMotorSpeed(std::abs(PID));
+  int motorSpeed = mapMotorSpeed(std::abs(PID));
   //int motorSpeed = std::abs(PID);
 
   Serial.print("Motor speed = ");

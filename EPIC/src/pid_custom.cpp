@@ -2,7 +2,7 @@
 #include "config.h"
 
 double getError(){
-    double angle = getTiltAngle();
+    angle = getTiltAngle();
     double error = desired - angle;
 
     return error;

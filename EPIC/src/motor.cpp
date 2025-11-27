@@ -41,12 +41,12 @@ void moveBackward(int power) {
 // }
 
 double mapMotorSpeed(double spdIn) {
-  int max = Kp * 60;
+  int max = Kp * 75;
   int min = 0;
 
-  int diff = spdIn;
+  int diff = (int) spdIn;
 
-  return 82 + ((200-82) * diff / (max - min));
+  return 75 + ((200-75) * diff / (max - min));
 }
 
 void testMotorSpeed(){

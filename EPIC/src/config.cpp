@@ -6,9 +6,9 @@ double angle = 0;
 double PID = 0;
 double desired = 0; //6.68
 
-double Kp = 5;
+double Kp = 7;
 double Ki = 0;
-double Kd = 1;
+double Kd = 0;
 
 int prevTime = 0;
 int prevError = 0;
