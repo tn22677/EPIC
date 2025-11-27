@@ -14,7 +14,7 @@ double getProportionalError(){
 
 double getDerivativeError(){
     int currTime = millis();
-    int timeChange = (double)currTime - prevTime;
+    double timeChange = (double) (currTime - prevTime);
 
     double dErr = (error - prevError)/(timeChange);
 

@@ -32,19 +32,19 @@ void loop() {
   angle = getTiltAngle();
 
   PID = getProportionalError() + getIntegralError() + getDerivativeError();
-  Serial.print("K = ");
-  Serial.println(getProportionalError());
-  Serial.print("I = ");
-  Serial.println(getIntegralError());
-  Serial.print("D = ");
-  Serial.println(getDerivativeError());
+  // Serial.print("K = ");
+  // Serial.println(getProportionalError());
+  // Serial.print("I = ");
+  // Serial.println(getIntegralError());
+  // Serial.print("D = ");
+  // Serial.println(getDerivativeError());
 
 
-  Serial.print("PID = ");
-  Serial.println(PID);
+  // Serial.print("PID = ");
+  // Serial.println(PID);
 
   //int motorSpeed = std::min(130.0, std::abs(PID));
-  int motorSpeed = mapMotorSpeed(std::abs(PID));
+  //int motorSpeed = mapMotorSpeed(std::abs(PID));
   //int motorSpeed = std::abs(PID);
 
   Serial.print("Motor speed = ");
